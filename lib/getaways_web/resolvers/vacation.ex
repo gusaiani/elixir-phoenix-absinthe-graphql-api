@@ -6,9 +6,9 @@ defmodule GetawaysWeb.Resolvers.Vacation do
     {:ok, Vacation.get_place_by_slug!(slug)}
   end
 
-  # def places(_, args, _) do
-  #   {:ok, Vacation.list_places(args)}
-  # end
+  def places(_, args, _) do
+    {:ok, Vacation.list_places(args)}
+  end
 
   # def create_booking(_, args, %{context: %{current_user: user}}) do
   #   case Vacation.create_booking(user, args) do
