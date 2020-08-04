@@ -1,4 +1,4 @@
-# Getaways GraphQL API
+# GraphQL API with Elixir, Phoenix and Absinthe
 
 ## Installation
 
@@ -53,7 +53,7 @@ query {
 
 ### Get Places Filtered by Name, Description, or Location
 
-```graphql 
+```graphql
 query {
   places(filter: {matching: "lake"}) {
     name
@@ -65,7 +65,7 @@ query {
 
 ### Get Places Filtered by Guest Count
 
-```graphql 
+```graphql
 query {
   places(filter: {guestCount: 6}) {
     name
@@ -76,7 +76,7 @@ query {
 
 ### Get Places Filtered by Features
 
-```graphql 
+```graphql
 query {
   places(filter: {petFriendly: true, pool: false, wifi: true}) {
     name
@@ -89,7 +89,7 @@ query {
 
 ### Get Places Available From a Start Date to an End Date
 
-```graphql 
+```graphql
 query {
   places(filter: {
     availableBetween: {startDate: "2019-02-01", endDate:"2019-02-10"}
@@ -226,7 +226,7 @@ mutation {
     endDate
     state
     totalPrice
-  } 
+  }
 }
 ```
 
@@ -267,7 +267,7 @@ mutation {
     user {
       username
     }
-  } 
+  }
 }
 ```
 
