@@ -10,10 +10,6 @@ defmodule GetawaysWeb.Resolvers.Vacation do
     {:ok, Vacation.list_places(args)}
   end
 
-  def bookings_for_place(place, _, _) do
-    {:ok, Vacation.bookings_for_place(place)}
-  end
-
   # def create_booking(_, args, %{context: %{current_user: user}}) do
   #   case Vacation.create_booking(user, args) do
   #     {:error, changeset} ->
