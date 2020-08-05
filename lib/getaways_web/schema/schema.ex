@@ -53,7 +53,9 @@ defmodule GetawaysWeb.Schema.Schema do
     field :price_per_night, non_null(:decimal)
     field :image, non_null(:string)
     field :image_thumbnail, non_null(:string)
-    field :bookings, list_of(:booking)
+    field :bookings, list_of(:booking) do
+      resolve &Resolvers.Vacation.bookings_for_place/3
+    end
   end
 
   object :booking do
