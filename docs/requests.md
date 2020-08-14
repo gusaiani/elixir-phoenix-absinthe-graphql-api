@@ -2,7 +2,7 @@
 
 ## Sign up
 
-```
+~~~graphql
 mutation {
   signup (
     username: "Gustavo Saiani",
@@ -16,11 +16,11 @@ mutation {
     token
   }
 }
-```
+~~~
 
 ## Sign in
 
-```
+~~~graphql
 mutation {
   signin (
     username: "Gustavo Saiani",
@@ -29,11 +29,11 @@ mutation {
     token
   }
 }
-```
+~~~
 
 ## List places
 
-```
+~~~graphql
 query {
   places(limit: 10) {
     id
@@ -41,11 +41,11 @@ query {
     location
   }
 }
-```
+~~~
 
 ## Get a place by its slug
 
-```
+~~~graphql
 {
   place(slug: "dock-house") {
     id
@@ -56,13 +56,13 @@ query {
     }
   }
 }
-```
+~~~
 
 ## Create a booking
 
 This request requires an authentication token
 
-```
+~~~graphql
 mutation {
   createBooking(
     placeId:1,
@@ -76,13 +76,13 @@ mutation {
     state
   }
 }
-```
+~~~
 
 ## Cancel a booking
 
 This request requires an authentication token
 
-```
+~~~graphql
 mutation {
   cancelBooking(
     bookingId:13
@@ -91,13 +91,13 @@ mutation {
     state
   }
 }
-```
+~~~
 
 ## Create a review
 
 This request requires an authentication token
 
-```
+~~~graphql
 mutation {
 	createReview (
     placeId:"3",
@@ -109,14 +109,13 @@ mutation {
     rating
   }
 }
-
-```
+~~~
 
 ## Subscribe to a booking change (create/cancel)
 
 To trigger it, open another window at http://localhost:4000/graphiql and create a booking or cancel an existing one
 
-```
+~~~graphql
 subscription {
   bookingChange(placeId: 1) {
     startDate
@@ -124,7 +123,7 @@ subscription {
     state
   }
 }
-```
+~~~
 
 ## Passing an authentication token
 
