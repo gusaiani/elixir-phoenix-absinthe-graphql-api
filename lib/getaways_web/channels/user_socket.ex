@@ -1,6 +1,6 @@
 defmodule GetawaysWeb.UserSocket do
   use Phoenix.Socket
-  use Absinthe.Phoenix.Socket, schema: GetawaysWeb.Schema.Schema
+  use Absinthe.Phoenix.Socket, schema: GetawaysWeb.Schema
 
   ## Channels
   # channel "room:*", GetawaysWeb.RoomChannel

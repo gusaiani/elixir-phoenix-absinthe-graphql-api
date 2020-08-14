@@ -10,10 +10,10 @@ defmodule GetawaysWeb.Router do
     pipe_through :api
 
     forward "/api", Absinthe.Plug,
-      schema: GetawaysWeb.Schema.Schema
+      schema: GetawaysWeb.Schema
 
     forward "/graphiql", Absinthe.Plug.GraphiQL,
-      schema: GetawaysWeb.Schema.Schema,
+      schema: GetawaysWeb.Schema,
       socket: GetawaysWeb.UserSocket
     end
 end

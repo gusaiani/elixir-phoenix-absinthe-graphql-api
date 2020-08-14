@@ -1,4 +1,4 @@
-defmodule GetawaysWeb.Schema.Schema do
+defmodule GetawaysWeb.Schema do
   use Absinthe.Schema
   alias Getaways.{Accounts, Vacation}
   alias GetawaysWeb.Resolvers

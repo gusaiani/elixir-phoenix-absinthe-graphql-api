@@ -13,7 +13,7 @@ defmodule GetawaysWeb.SubscriptionCase do
 
       use GetawaysWeb.ChannelCase
       use Absinthe.Phoenix.SubscriptionTest,
-        schema: GetawaysWeb.Schema.Schema
+        schema: GetawaysWeb.Schema
       import Getaways.TestHelpers
 
       defp auth_user(conn, user) do
