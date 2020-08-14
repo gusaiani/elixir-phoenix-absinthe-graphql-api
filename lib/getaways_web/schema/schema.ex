@@ -2,6 +2,7 @@ defmodule GetawaysWeb.Schema.Schema do
   use Absinthe.Schema
   alias Getaways.{Accounts, Vacation}
   alias GetawaysWeb.Resolvers
+  alias GetawaysWeb.Schema.Middleware
 
   import_types Absinthe.Type.Custom
   import Absinthe.Resolution.Helpers, only: [ dataloader: 1, dataloader: 3 ]
@@ -28,23 +29,25 @@ defmodule GetawaysWeb.Schema.Schema do
       arg :place_id, non_null(:id)
       arg :start_date, non_null(:date)
       arg :end_date, non_null(:date)
+      middleware Middleware.Authenticate
       resolve &Resolvers.Vacation.create_booking/3
     end
 
     @desc "Cancel a booking"
     field :cancel_booking, :booking do
       arg :booking_id, non_null(:id)
+      middleware Middleware.Authenticate
       resolve &Resolvers.Vacation.cancel_booking/3
     end
 
-    @desc "Create a review for a place"
-    field :create_review, :review do
-      arg :place_id, non_null(:id)
-      arg :comment, :string
-      arg :rating, non_null(:integer)
-      resolve &Resolvers.Vacation.create_review/3
-    end
-
+   @desc "Create a review for a place"
+   field :create_review, :review do
+     arg :place_id, non_null(:id)
+     arg :comment, :string
+     arg :rating, non_null(:integer)
+     middleware Middleware.Authenticate
+     resolve &Resolvers.Vacation.create_review/3
+   end
     @desc "Create a user account"
     field :signup, :session do
       arg :username, non_null(:string)
@@ -133,8 +136,6 @@ defmodule GetawaysWeb.Schema.Schema do
   end
 
   def context(ctx) do
-    ctx = Map.put(ctx, :current_user, Getaways.Accounts.get_user(1))
-
     loader =
       Dataloader.new
       |> Dataloader.add_source(Vacation, Vacation.datasource())
