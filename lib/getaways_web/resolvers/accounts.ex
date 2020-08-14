@@ -26,6 +26,14 @@ defmodule GetawaysWeb.Resolvers.Accounts do
     end
   end
 
+  def me(_, _, %{context: %{current_user: user}}) do
+    {:ok, user}
+  end
+
+  def me(_, _, _) do
+    {:ok, nil}
+  end
+
   # def signin(_, %{username: username, password: password}, _) do
   #   case Accounts.authenticate(username, password) do
   #     :error ->
