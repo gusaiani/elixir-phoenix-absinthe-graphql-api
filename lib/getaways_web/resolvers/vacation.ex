@@ -18,6 +18,7 @@ defmodule GetawaysWeb.Resolvers.Vacation do
          details: ChangesetErrors.error_details(changeset)
         }
       {:ok, booking} ->
+        publish_booking_change(booking)
         {:ok, booking}
     end
   end
@@ -34,6 +35,7 @@ defmodule GetawaysWeb.Resolvers.Vacation do
            details: ChangesetErrors.error_details(changeset)
           }
         {:ok, booking} ->
+          publish_booking_change(booking)
           {:ok, booking}
       end
     else
@@ -55,6 +57,14 @@ defmodule GetawaysWeb.Resolvers.Vacation do
       {:ok, review} ->
         {:ok, review}
     end
+  end
+
+  defp publish_booking_change(booking) do
+    Absinthe.Subscription.publish(
+      GetawaysWeb.Endpoint,
+      booking,
+      booking_change: booking.place_id
+    )
   end
 
   # def create_booking(_, args, %{context: %{current_user: user}}) do
